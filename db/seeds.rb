@@ -52,5 +52,5 @@ dani = Application.create(
               application_status: 'Pending')
 mina = Pet.create(adoptable: true, age: 1, breed: 'ND', name: 'Mina', shelter_id: bwf.id)
 vida = Pet.create(adoptable: true, age: 4, breed: 'Yorkshire', name: 'Vida', shelter_id: foothills.id)
-dani_mina = ApplicationPet.create!(application_id: dani.id, pet_id: mina.id)
-dani_vida = ApplicationPet.create!(application_id: dani.id, pet_id: vida.id)
+dani_mina = ApplicationPet.create(application_id: dani.id, pet_id: mina.id)
+dani_vida = ApplicationPet.create(application_id: dani.id, pet_id: vida.id)
