@@ -118,6 +118,7 @@ RSpec.describe 'application show page' do
     expect(page).to_not have_content('Name: Chris Simmons')
     expect(page).to_not have_content('Name: Mike Dao')
   end
+
   describe 'search' do
     it 'can search for pets for an application' do
       shelter = Shelter.create!(name: 'Aurora shelter', city: 'Aurora, CO', foster_program: false, rank: 9)
@@ -332,7 +333,7 @@ end
    fill_in :applicant_bio, with: "I like dogs a lot."
 
    click_on 'Submit Application'
-   
+save_and_open_page
    expect(current_path).to eq("/applications/#{mike.id}")
    expect(page).to have_content('Applicant Bio: I like dogs a lot')
    expect(page).to have_content('Application Status: Pending')
