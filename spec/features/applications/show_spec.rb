@@ -333,13 +333,13 @@ end
    fill_in :applicant_bio, with: "I like dogs a lot."
 
    click_on 'Submit Application'
-save_and_open_page
+
    expect(current_path).to eq("/applications/#{mike.id}")
    expect(page).to have_content('Applicant Bio: I like dogs a lot')
    expect(page).to have_content('Application Status: Pending')
  end
 
- xit 'has no submit button if pets are not added to the application' do
+ it 'has no submit button if pets are not added to the application' do
    aurora = Shelter.create!(name: 'Aurora shelter', city: 'Aurora, CO', foster_program: false, rank: 9)
    mike = Application.create!(
                  name: 'Mike Dao',
@@ -374,12 +374,7 @@ save_and_open_page
    vida = Pet.create!(adoptable: true, age: 4, breed: 'Yorkshire', name: 'Vida', shelter_id: foothills.id)
 
    visit "/applications/#{mike.id}"
-
-   expect(find('form')).to have_content('Name: Mike Dao')
-   expect(find('form')).to have_content('Address: 245 Maple St')
-   expect(find('form')).to have_content('City: Centennial')
-   expect(find('form')).to have_content('State: Colorado')
-   expect(find('form')).to have_content('Zip: 80112')
+   save_and_open_page
    expect(page).to_not have_link('Brutus')
    expect(page).to_not have_button('Submit Application')
  end
