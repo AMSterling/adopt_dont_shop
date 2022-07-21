@@ -347,8 +347,7 @@ end
                  city: 'Centennial',
                  state: 'Colorado',
                  zip_code: '80112',
-                 applicant_bio: 'My dog needs another to help chase bears up trees.',
-                 application_status: 'Pending')
+                 application_status: 'In Progress')
    brutus = Pet.create!(adoptable: true, age: 3, breed: 'Karelian', name: 'Brutus', shelter_id: aurora.id)
    summit = Shelter.create!(name: 'Summit County', city: 'Akron, OH', foster_program: false, rank: 8)
    chris = Application.create!(
@@ -357,8 +356,7 @@ end
                  city: 'Columbus',
                  state: 'Ohio',
                  zip_code: '43004',
-                 applicant_bio: 'Because how much more work could a third cat be?',
-                 application_status: 'Pending')
+                 application_status: 'In Progress')
    chloe = Pet.create!(adoptable: true, age: 2, breed: 'Tabby', name: 'Chloe', shelter_id: summit.id)
    foothills = Shelter.create!(name: 'Foothills Animal Shelter', city: 'Golden, CO', foster_program: false, rank: 9)
    bwf = Shelter.create!(name: 'Bunny World Foundation', city: 'Los Angeles, CA', foster_program: true, rank: 9)
@@ -368,14 +366,25 @@ end
                  city: 'Arvada',
                  state: 'Colorado',
                  zip_code: '80003',
-                 applicant_bio: 'Because I am just awesome.',
-                 application_status: 'Pending')
+                 application_status: 'In Progress')
    mina = Pet.create!(adoptable: true, age: 1, breed: 'ND', name: 'Mina', shelter_id: bwf.id)
    vida = Pet.create!(adoptable: true, age: 4, breed: 'Yorkshire', name: 'Vida', shelter_id: foothills.id)
 
    visit "/applications/#{mike.id}"
-   save_and_open_page
+
+   expect(page).to have_button('Pet name search')
    expect(page).to_not have_link('Brutus')
    expect(page).to_not have_button('Submit Application')
+
+   fill_in :search, with: 'Brutus'
+   click_on 'Pet name search'
+
+   expect(page).to have_content('Brutus')
+   expect(page).to_not have_button('Submit Application')
+
+   click_on "Adopt #{brutus.name}"
+
+   expect(page).to have_link('Brutus')
+   expect(page).to have_button('Submit Application')
  end
 end
