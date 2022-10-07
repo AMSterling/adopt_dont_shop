@@ -3,8 +3,10 @@ require 'rails_helper'
 RSpec.describe 'the pets index' do
   it 'lists all the pets with their attributes' do
     shelter = Shelter.create(name: 'Aurora shelter', city: 'Aurora, CO', foster_program: false, rank: 9)
-    pet_1 = Pet.create(adoptable: true, age: 1, breed: 'sphynx', name: 'Lucille Bald', shelter_id: shelter.id)
+    bwf = Shelter.create(name: 'Bunny World Foundation', city: 'Los Angeles, CA', foster_program: true, rank: 9)
+    pet_1 = Pet.create(adoptable: true, age: 1, breed: 'sphynx', name: 'Lucille Bald', shelter_id: shelter.id, image_path: 'pets/lucille_bald.jpeg')
     pet_2 = Pet.create(adoptable: true, age: 3, breed: 'doberman', name: 'Lobster', shelter_id: shelter.id)
+    mina = Pet.create(adoptable: true, age: 1, breed: 'ND', name: 'Mina', shelter_id: bwf.id, image_path: 'pets/mina.jpeg')
 
     visit "/pets"
 
@@ -68,9 +70,11 @@ RSpec.describe 'the pets index' do
 
   it 'lists partial matches as search results' do
     shelter = Shelter.create(name: 'Aurora shelter', city: 'Aurora, CO', foster_program: false, rank: 9)
+    bwf = Shelter.create(name: 'Bunny World Foundation', city: 'Los Angeles, CA', foster_program: true, rank: 9)
     pet_1 = Pet.create(adoptable: true, age: 7, breed: 'sphynx', name: 'Bare-y Manilow', shelter_id: shelter.id)
     pet_2 = Pet.create(adoptable: true, age: 3, breed: 'domestic pig', name: 'Babe', shelter_id: shelter.id)
     pet_3 = Pet.create(adoptable: true, age: 4, breed: 'chihuahua', name: 'Elle', shelter_id: shelter.id)
+    mina = Pet.create(adoptable: true, age: 1, breed: 'ND', name: 'Mina', shelter_id: bwf.id, image_path: '/images/pets/mina.jpg')
 
     visit "/pets"
 

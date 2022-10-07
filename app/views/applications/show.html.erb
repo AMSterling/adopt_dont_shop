@@ -11,7 +11,8 @@
 <p> Application Status: <%= @application.application_status %></p>
 
 <% @application.pets.each do |pet| %>
-<%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
+<p><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></p>
+<%= image_tag "#{pet.image_path}" %>
 <% end %>
 
 <%= render partial: "add_pet", locals: { path: "/applications/#{@application.id}",  method: :patch, local: true } %>

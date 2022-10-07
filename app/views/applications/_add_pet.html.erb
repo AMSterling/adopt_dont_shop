@@ -9,6 +9,7 @@
 <% if params[:search].present? %>
   <% @pets.each do |pet| %>
   <h3><%= pet.name %></h3>
-   <%= button_to "Adopt #{pet.name}", "/applications/#{@application.id}", method: :post, params: {pet_id: pet.id} %>
+  <%= image_tag "#{pet.image_path}" %>
+  <%= button_to "Adopt #{pet.name}", "/applications/#{@application.id}", method: :post, params: {pet_id: pet.id} %>
 <% end %>
 <% end %>
