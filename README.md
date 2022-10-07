@@ -5,6 +5,7 @@
 <!-- heroku pg:reset DATABASE -->
 <!-- heroku run rails db:migrate -->
 <!-- heroku run rails db:seed -->
+<!-- heroku stack:set heroku-20 -->
 
 
 # Adopt, don't Shop
