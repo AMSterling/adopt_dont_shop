@@ -8,7 +8,7 @@ scooby = Pet.create(name: 'Scooby', age: 2, breed: 'Great Dane', adoptable: true
 scrappy = Pet.create(name: 'Scrappy', age: 1, breed: 'Great Dane', adoptable: true, shelter_id: mystery.id, image_path: 'pets/scrappy.jpeg')
 
 #Heavenly shelter and pets
-heavenly = Shelter.create(name: 'Heavenly pets', city: 'Aurora, CO', foster_program: true, rank: 7)
+heavenly = Shelter.create(name: 'Heavenly Pets', city: 'Aurora, CO', foster_program: true, rank: 7)
 hairlesson = Pet.create(adoptable: true, age: 1, breed: 'Sphynx', name: 'George Hairlesson', shelter_id: heavenly.id, image_path: 'pets/hairlesson.jpeg')
 charlie = Pet.create(adoptable: true, age: 3, breed: 'GSD', name: 'Charlie', shelter_id: heavenly.id, image_path: 'pets/charlie.jpeg')
 
