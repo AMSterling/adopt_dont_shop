@@ -16,7 +16,7 @@ charlie = Pet.create(adoptable: true, age: 3, breed: 'GSD', name: 'Charlie', she
 shelter = Shelter.create(name: 'All Animals', city: 'Somewhere, CO', foster_program: false, rank: 6)
 
 #Shelters with applicants and pets attched to applications
-aurora = Shelter.create(name: 'Aurora shelter', city: 'Aurora, CO', foster_program: false, rank: 9)
+aurora = Shelter.create(name: 'Aurora Shelter', city: 'Aurora, CO', foster_program: false, rank: 9)
 mike = Application.create(
               name: 'Mike Dao',
               street_address: '245 Maple St',

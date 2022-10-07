@@ -1,7 +1,24 @@
+<center>
+  <div id="pending_apps">
+    <h2>Shelters with pending applications</h2>
+    <% @shelters.has_pending_applications.each do |shelter| %>
+      <div id="shelter-<%= shelter.id %>">
+      <p><%= shelter.name %></p>
+    </div>
+    <% end %>
+  </div>
+</center>
+
+<br>
+
+<hr>
+
+<br>
+
+<h2>All Shelters</h2>
 <% @shelters.each_with_index do |shelter, index| %>
   <div id="shelter-<%= index %>">
     <h3><%= shelter.name %></h3>
-    <p>Created at: <%= shelter.created_at %></p>
     <%= link_to "Update #{shelter.name}", "/shelters/#{shelter.id}/edit" %>
     <%= link_to "Delete #{shelter.name}", "/shelters/#{shelter.id}", method: :delete %>
   </div>
