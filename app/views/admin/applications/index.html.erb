@@ -1,0 +1,9 @@
+<center>
+  <h3>Pending Applications</h3>
+    <% @applications.each do |application| %>
+      <% if application.application_status == 'Pending' %>
+        <div id="app-<%= application.id %>">
+          <%= link_to "#{application.name}'s Application", "/admin/applications/#{application.id}" %>
+        </div>
+      <% end %>
+    <% end %>

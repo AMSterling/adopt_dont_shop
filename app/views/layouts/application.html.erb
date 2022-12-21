@@ -15,17 +15,19 @@
         <%= msg %>
       </div>
     <% end %>
-    <navbar>
+    <nav>
       <ul>
         <li><%= link_to "Pets", "/pets" %></li>
         <li><%= link_to "Shelters", "/shelters" %></li>
         <li><%= link_to "Veterinarians", "/veterinarians" %></li>
         <li><%= link_to "Veterinary Offices", "/veterinary_offices" %></li>
         <li style="float:right" >
-          <%= link_to 'Admin', '/admin/shelters' %>
+          <%= link_to 'Admin Shelters', '/admin/shelters' %>
+          <br>
+          <%= link_to 'Admin Applications', '/admin/applications' %>
         </li>
       </ul>
-    </navbar>
+    </nav>
     <%= yield %>
   </body>
 </html>

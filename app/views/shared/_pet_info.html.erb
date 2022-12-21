@@ -1,0 +1,14 @@
+<row id='pet-index'>
+  <column id='pet-image'>
+    <%= image_tag "#{@pet.image_path}" %>
+  </column>
+  <column id='pet-info'>
+    <h3><%= link_to "#{@pet.name}", "/pets/#{@pet.id}" %></h3>
+    <p>Age: <%= @pet.age %></p>
+    <p>Breed: <%= @pet.breed %></p>
+    <p>Adoptable: <%= @pet.adoptable %></p>
+    <p><%= link_to "#{@pet.shelter_name}", "/shelters/#{@pet.shelter.id}" %></p>
+    <%= link_to "Edit #{@pet.name}", "/pets/#{@pet.id}/edit" %>
+    <%= link_to "Delete #{@pet.name}", "/pets/#{@pet.id}", method: :delete %>
+  </column>
+</row>

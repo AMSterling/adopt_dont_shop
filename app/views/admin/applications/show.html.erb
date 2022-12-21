@@ -1,0 +1,27 @@
+<center>
+<h2>Application for <%= @application.name %></h2>
+
+<% @application.application_pets.each do |app| %>
+<% @pet = app.pet %>
+<div id='pet-<%= app.pet.id %>'>
+  <% if app.approved == 'true' && app.pet.adoptable == 'false' %>
+    <p id='approved'>This pet has been approved</p>
+    <%= render 'shared/pet_info' %>
+  <% elsif app.approved == 'false' && app.pet.adoptable == 'true' %>
+    <p id='rejected'>Applicant has been rejected for this pet</p>
+    <%= render 'shared/pet_info' %>
+  <% elsif app.approved == 'true' %>
+    <p id='approved'>This pet has been approved</p>
+    <%= render 'shared/pet_info' %>
+  <% else %>
+    <%= render 'shared/pet_info' %>
+    <ul>
+      <li><%= button_to 'Approve', "/admin/applications/#{@application.id}",  method: :patch, params: { approved: app.pet_id } %></li>
+      <li><%= button_to 'Reject', "/admin/applications/#{@application.id}",  method: :patch, params: { rejected: app.pet_id }  %></li>
+    </ul>
+    <br>
+    <br>
+  <% end %>
+</div>
+<% end %>
+</center>

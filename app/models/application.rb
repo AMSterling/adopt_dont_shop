@@ -5,7 +5,7 @@ class Application < ApplicationRecord
   validates :state, presence: true
   validates :zip_code, presence: true, numericality: true, length: { is: 5 }
   validate :applicant_bio
-  validate :application_status
+  validates :application_status, inclusion: ['In Progress', 'Pending', 'Accepted', 'Rejected']
   has_many :application_pets, dependent: :destroy
   has_many :pets, through: :application_pets
 end

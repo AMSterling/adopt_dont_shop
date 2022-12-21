@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   get '/', to: 'application#welcome'
 
   namespace :admin do
-    resources :shelters, only: [:index]
+    resources :shelters, :applications
+
   end
 
   get '/applications', to: 'applications#index'

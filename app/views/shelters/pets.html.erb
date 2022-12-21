@@ -1,14 +1,30 @@
+<center>
 <h1>All pets at <%= @shelter.name %></h1>
 
-<%= link_to "Sort alphabetically", "/shelters/#{@shelter.id}/pets?sort=alphabetical" %>
+<ul>
+  <li><%= link_to "Sort alphabetically", "/shelters/#{@shelter.id}/pets?sort=alphabetical" %></li>
+</ul>
+
+<br>
+<br>
 
 <% @shelter_pets.each do |pet| %>
-  <h3><%= pet.name %></h3>
-  <p>Age: <%= pet.age %></p>
-  <p>Breed: <%= pet.breed %></p>
-  <p><%= pet.name %> can be adopted from <%= @shelter.name %>!</p>
-  <%= link_to "Edit #{pet.name}", "/pets/#{pet.id}/edit" %>
-  <%= link_to "Delete #{pet.name}", "/pets/#{pet.id}", method: :delete %>
+<div id="pet-<%= pet.id %>">
+  <row id='pet-index'>
+    <column id='pet-image'>
+      <%= image_tag "#{pet.image_path}" %>
+    </column>
+    <column id='pet-info'>
+      <h3><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h3>
+      <p>Age: <%= pet.age %></p>
+      <p>Breed: <%= pet.breed %></p>
+      <p>Adoptable: <%= pet.adoptable %></p>
+      <p>You can find <%= pet.name %> at <%= link_to "#{pet.shelter_name}", "/shelters/#{pet.shelter.id}" %>!</p>
+      <%= link_to "Edit #{pet.name}", "/pets/#{pet.id}/edit" %>
+      <%= link_to "Delete #{pet.name}", "/pets/#{pet.id}", method: :delete %>
+    </column>
+  </row>
+</div>
 <% end %>
 
 <%= form_with url: "/shelters/#{@shelter.id}/pets", method: :get do |form| %>
@@ -17,4 +33,8 @@
   <%= form.submit "Filter" %>
 <% end %>
 
-<p><%= link_to "Create a Pet", "/shelters/#{@shelter.id}/pets/new" %></p>
+<ul>
+  <li><%= link_to "Create a Pet", "/shelters/#{@shelter.id}/pets/new" %></li>
+</ul>
+
+</center>

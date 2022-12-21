@@ -10,11 +10,11 @@
 <p>Applicant Bio: <%= @application.applicant_bio %></p>
 <p> Application Status: <%= @application.application_status %></p>
 
+<%= render partial: "add_pet", locals: { path: "/applications/#{@application.id}",  method: :patch, local: true } %>
+<br/>
+<%= render partial: "bio", locals: { path: "/applications/#{@application.id}",  method: :patch, local: true } %>
+
 <% @application.pets.each do |pet| %>
 <p><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></p>
 <%= image_tag "#{pet.image_path}" %>
 <% end %>
-
-<%= render partial: "add_pet", locals: { path: "/applications/#{@application.id}",  method: :patch, local: true } %>
-<br/>
-<%= render partial: "bio", locals: { path: "/applications/#{@application.id}",  method: :patch, local: true } %>
